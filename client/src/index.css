@@ -1,0 +1,331 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Presentation Pro - Enhanced Styles */
+
+/* Custom CSS Variables for AI Theme */
+:root {
+  --ai-primary: #6366F1;
+  --ai-secondary: #8B5CF6;
+  --ai-accent: #EC4899;
+  --ai-success: #10B981;
+  --ai-warning: #F59E0B;
+  --ai-error: #EF4444;
+  --ai-dark: #1E293B;
+  --ai-light: #F8FAFC;
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* AI-Themed Components */
+.card {
+  @apply bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 p-6 shadow-xl;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 backdrop-blur-sm;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+}
+
+.btn-secondary {
+  @apply bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg border border-white/20 transition-all duration-200 transform hover:scale-105 backdrop-blur-sm;
+}
+
+/* AI Loading Animation */
+.loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #6366F1;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* AI Pulse Animation */
+.ai-pulse {
+  animation: ai-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes ai-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* AI Gradient Text */
+.ai-gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* AI Glow Effect */
+.ai-glow {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.ai-glow:hover {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+}
+
+/* AI Neural Network Background */
+.ai-neural-bg {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+}
+
+/* AI Floating Animation */
+.ai-float {
+  animation: ai-float 6s ease-in-out infinite;
+}
+
+@keyframes ai-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* AI Typewriter Effect */
+.ai-typewriter {
+  overflow: hidden;
+  border-right: 2px solid #6366F1;
+  white-space: nowrap;
+  animation: ai-typewriter 3.5s steps(40, end), ai-blink-caret 0.75s step-end infinite;
+}
+
+@keyframes ai-typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes ai-blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: #6366F1; }
+}
+
+/* AI Matrix Rain Effect */
+.ai-matrix {
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-matrix::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+  animation: ai-matrix-rain 2s linear infinite;
+}
+
+@keyframes ai-matrix-rain {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* AI Holographic Effect */
+.ai-holographic {
+  background: linear-gradient(45deg, 
+    rgba(99, 102, 241, 0.1) 0%, 
+    rgba(139, 92, 246, 0.1) 25%, 
+    rgba(236, 72, 153, 0.1) 50%, 
+    rgba(99, 102, 241, 0.1) 75%, 
+    rgba(139, 92, 246, 0.1) 100%);
+  background-size: 400% 400%;
+  animation: ai-holographic-shift 3s ease-in-out infinite;
+}
+
+@keyframes ai-holographic-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* AI Particle Effect */
+.ai-particles {
+  position: relative;
+}
+
+.ai-particles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  animation: ai-particle-float 4s ease-in-out infinite;
+}
+
+@keyframes ai-particle-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* AI Glitch Effect */
+.ai-glitch {
+  position: relative;
+}
+
+.ai-glitch::before,
+.ai-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ai-glitch::before {
+  animation: ai-glitch-1 0.5s infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.ai-glitch::after {
+  animation: ai-glitch-2 0.5s infinite;
+  color: #ff00ff;
+  z-index: -2;
+}
+
+@keyframes ai-glitch-1 {
+  0%, 14%, 15%, 49%, 50%, 99%, 100% {
+    transform: translate(0);
+  }
+  15%, 49% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes ai-glitch-2 {
+  0%, 20%, 21%, 62%, 63%, 99%, 100% {
+    transform: translate(0);
+  }
+  21%, 62% {
+    transform: translate(2px, -2px);
+  }
+}
+
+/* AI Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    @apply p-4;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    @apply py-2 px-4 text-sm;
+  }
+  
+  .input-field {
+    @apply py-2 px-3;
+  }
+}
+
+/* AI Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* AI Focus States */
+.ai-focus:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* AI Selection */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
+/* AI Print Styles */
+@media print {
+  .ai-no-print {
+    display: none !important;
+  }
+}
+
+/* AI High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card {
+    @apply bg-white/20 border-white/40;
+  }
+  
+  .input-field {
+    @apply bg-white/20 border-white/40;
+  }
+}
+
+/* AI Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* AI Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-primary: #818CF8;
+    --ai-secondary: #A78BFA;
+    --ai-accent: #F472B6;
+  }
+}
