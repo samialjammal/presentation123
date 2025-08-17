@@ -11,9 +11,9 @@ const FormData = require('form-data');
 const axios = require('axios');
 require('dotenv').config();
 
-// Canva API Configuration
-const CANVA_CLIENT_ID = process.env.CANVA_CLIENT_ID ;
-const CANVA_CLIENT_SECRET = process.env.CANVA_CLIENT_SECRET ;
+// Canva API Configuration (Demo mode only)
+const CANVA_CLIENT_ID = process.env.CANVA_CLIENT_ID || 'demo-client-id';
+const CANVA_CLIENT_SECRET = process.env.CANVA_CLIENT_SECRET || 'demo-client-secret';
 const CANVA_BASE_URL = 'https://api.canva.com';
 const CANVA_AUTH_URL = 'https://www.canva.com/oauth/authorize';
 const CANVA_TOKEN_URL = 'https://api.canva.com/oauth/token';
@@ -1788,59 +1788,33 @@ function generateDemoContentForCanva(topic, audience, style, slides, additionalI
   };
 }
 
-// Get Canva OAuth2 access token
+// Get Canva OAuth2 access token (Demo mode only)
 async function getCanvaAccessToken() {
   try {
-    // For now, we'll use client credentials flow
-    // In a real implementation, you'd need user authorization
-    const response = await axios.post(CANVA_TOKEN_URL, {
-      grant_type: 'client_credentials',
-      client_id: CANVA_CLIENT_ID,
-      client_secret: CANVA_CLIENT_SECRET
-    }, {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
-
-    return response.data.access_token;
+    // Demo mode - return a mock token
+    console.log('Canva API not available - using demo mode');
+    return 'demo-access-token';
   } catch (error) {
     console.error('Error getting Canva access token:', error);
-    throw new Error('Failed to authenticate with Canva API');
+    throw new Error('Canva API not available in demo mode');
   }
 }
 
-// Create Canva presentation
+// Create Canva presentation (Demo mode only)
 async function createCanvaPresentation(content, template = 'business') {
   try {
-    // Get access token
-    const accessToken = await getCanvaAccessToken();
+    console.log('Canva API not available - creating demo presentation');
     
-    const response = await axios.post(`${CANVA_BASE_URL}/v1/presentations`, {
+    // For demo purposes, return a mock presentation
+    return {
+      id: `demo-${Date.now()}`,
       title: content.title,
-      template: template,
-      slides: content.slides.map((slide, index) => ({
-        title: slide.title,
-        content: slide.content,
-        slideNumber: index + 1
-      }))
-    }, {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-      }
-    });
-
-    console.log('Canva presentation created successfully');
-    return response.data;
+      status: 'created',
+      url: 'https://www.canva.com/demo'
+    };
 
   } catch (error) {
     console.error('Error creating Canva presentation:', error);
-    
-    // If Canva API fails, create a mock response for demo purposes
-    if (error.response && error.response.status === 401) {
-      throw new Error('Invalid Canva credentials. Please check your Client ID and Client Secret.');
-    }
     
     // For demo purposes, return a mock presentation
     return {
@@ -1929,20 +1903,38 @@ async function exportCanvaToPowerPoint(presentationId) {
   }
 }
 
-// Get Canva templates
+// Get Canva templates (Demo mode only)
 async function getCanvaTemplates() {
   try {
-    // Get access token
-    const accessToken = await getCanvaAccessToken();
+    console.log('Canva API not available - returning demo templates');
     
-    const response = await axios.get(`${CANVA_BASE_URL}/v1/templates?type=presentation`, {
-      headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
+    // Return demo templates
+    return [
+      {
+        id: 'business',
+        name: 'Business Professional',
+        thumbnail: 'https://via.placeholder.com/300x200/6366F1/FFFFFF?text=Business',
+        category: 'Business'
+      },
+      {
+        id: 'creative',
+        name: 'Creative Modern',
+        thumbnail: 'https://via.placeholder.com/300x200/8B5CF6/FFFFFF?text=Creative',
+        category: 'Creative'
+      },
+      {
+        id: 'minimal',
+        name: 'Minimal Clean',
+        thumbnail: 'https://via.placeholder.com/300x200/6B7280/FFFFFF?text=Minimal',
+        category: 'Minimal'
+      },
+      {
+        id: 'tech',
+        name: 'Technology',
+        thumbnail: 'https://via.placeholder.com/300x200/059669/FFFFFF?text=Tech',
+        category: 'Technology'
       }
-    });
-
-    return response.data.templates || [];
+    ];
 
   } catch (error) {
     console.error('Error fetching Canva templates:', error);
