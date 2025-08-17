@@ -2,6 +2,14 @@
 
 Railway is perfect for your AI Presentation Generator - it offers a free tier with $5 monthly credit and doesn't require a credit card!
 
+## 🐛 Fixed: Canvas Dependency Issue
+
+**Good news!** I've fixed the build issue that was causing the deployment to fail. The problem was with the `canva-api` package which required Python and native compilation. I've:
+
+- ✅ Removed the problematic `canva-api` dependency
+- ✅ Updated the server to work in demo mode for Canva features
+- ✅ Made the build process much simpler and more reliable
+
 ## 📋 Prerequisites
 
 1. **GitHub Account**: Your code must be pushed to a GitHub repository
@@ -17,13 +25,13 @@ Railway is perfect for your AI Presentation Generator - it offers a free tier wi
 1. **Push your code to GitHub** (if not already done):
    ```bash
    git add .
-   git commit -m "Prepare for Railway deployment"
+   git commit -m "Fixed canvas dependency - ready for Railway"
    git push origin main
    ```
 
 2. **Verify these files exist in your repository**:
-   - ✅ `package.json`
-   - ✅ `server.js`
+   - ✅ `package.json` (updated - no canvas dependency)
+   - ✅ `server.js` (updated - Canva demo mode)
    - ✅ `client/package.json`
    - ✅ `railway.json`
    - ✅ `Procfile`
@@ -63,43 +71,35 @@ PORT=3001
 ```
 OPENAI_API_KEY=sk-your-openai-api-key-here
 CLOUDMERSIVE_API_KEY=your-cloudmersive-api-key-here
-CANVA_CLIENT_ID=your-canva-client-id
-CANVA_CLIENT_SECRET=your-canva-client-secret
 ```
 
-**How to add environment variables**:
-1. Go to your project dashboard
-2. Click "Variables" tab
-3. Click "New Variable"
-4. Add each variable one by one
-5. Click "Add"
+**Note**: Canva API keys are no longer required since we're using demo mode.
 
 ### Step 4: Wait for Deployment
 
 1. **Monitor the build process**:
    - Watch the build logs in real-time
-   - Build takes 1-3 minutes
+   - Build takes 1-3 minutes (much faster now!)
    - You'll see progress for installing dependencies and building React
 
 2. **Check for success**:
    - Green status means deployment succeeded
    - Your app URL will be displayed (e.g., `https://ai-presentation-generator-production.up.railway.app`)
 
-## 🔧 Railway-Specific Configuration
+## 🔧 What's Changed
 
-Railway automatically detects your Node.js app, but you can customize:
+### ✅ Fixed Issues:
+- **Canvas dependency removed** - No more Python compilation errors
+- **Simplified build process** - Faster and more reliable
+- **Canva features in demo mode** - Still works, but uses mock data
+- **Better error handling** - More graceful fallbacks
 
-### Custom Domain (Optional)
-1. Go to your project dashboard
-2. Click "Settings" tab
-3. Click "Custom Domains"
-4. Add your domain
-
-### Environment Variables
-Railway makes it easy to manage environment variables:
-- **Development**: Variables for development environment
-- **Production**: Variables for production environment
-- **Preview**: Variables for preview deployments
+### 🎯 Features Available:
+- ✅ **AI-powered presentations** (with OpenAI API key)
+- ✅ **Demo presentations** (without API keys)
+- ✅ **Professional templates**
+- ✅ **PowerPoint downloads**
+- ✅ **Canva demo mode** (shows how it would work)
 
 ## 💰 Railway Free Tier Benefits
 
@@ -113,10 +113,11 @@ Railway makes it easy to manage environment variables:
 
 ## 🔧 Troubleshooting Railway Issues
 
-### Build Failures
+### Build Failures (Should be fixed now!)
 
 **Issue**: Build fails during npm install
 **Solution**: 
+- ✅ Fixed! Canvas dependency removed
 - Check that all dependencies are in package.json
 - Ensure Node.js version is compatible (18+)
 
@@ -145,12 +146,13 @@ Once deployed successfully, your app will be available at:
 `https://your-app-name-production.up.railway.app`
 
 ### What Users Can Do:
-- ✅ Generate AI-powered presentations
+- ✅ Generate AI-powered presentations (with API key)
+- ✅ Generate demo presentations (without API key)
 - ✅ Download PowerPoint files
-- ✅ Use demo mode without API keys
 - ✅ Access professional templates
 - ✅ Choose from multiple AI models
 - ✅ Customize presentation styles
+- ✅ Try Canva demo mode
 
 ## 📊 Monitoring Your App
 
@@ -215,3 +217,5 @@ After successful deployment:
 ---
 
 **🎉 Congratulations! Your AI Presentation Generator is now live on Railway without needing a credit card!**
+
+**The canvas dependency issue has been fixed, so deployment should work smoothly now!** 🚀
