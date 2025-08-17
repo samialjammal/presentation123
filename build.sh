@@ -12,6 +12,14 @@ npm install
 echo "📦 Installing client dependencies..."
 cd client && npm install && cd ..
 
+# Verify react-scripts is installed
+echo "🔍 Verifying react-scripts installation..."
+if [ ! -f "client/node_modules/.bin/react-scripts" ]; then
+    echo "❌ react-scripts not found in client/node_modules/.bin/"
+    echo "📦 Reinstalling client dependencies..."
+    cd client && npm install react-scripts && cd ..
+fi
+
 # Build client
 echo "🔨 Building React app..."
 cd client && npm run build && cd ..

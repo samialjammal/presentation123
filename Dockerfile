@@ -9,13 +9,13 @@ COPY package*.json ./
 COPY client/package*.json ./client/
 
 # Install dependencies
-RUN npm run install:all
+RUN npm install && cd client && npm install
 
 # Copy source code
 COPY . .
 
 # Build the React app
-RUN npm run build
+RUN cd client && npm run build
 
 # Expose port
 EXPOSE 3001
